@@ -21,30 +21,10 @@ function project3D(x,y,z) {
 }
 
 exports.drawCanvas = function(ctx){
-  return function(canvas){
+  return function(vertices){
       return function(){
-       
-        var vertices = [];
         var verticesPixLoc = [];
-        vertices.push([SIZE,SIZE,SIZE]);
-        vertices.push([-SIZE,SIZE,SIZE]);
-        vertices.push([-SIZE,-SIZE,SIZE]);
-        vertices.push([SIZE,-SIZE,SIZE]);
-        
-        vertices.push([SIZE,SIZE,SIZE]);
-        vertices.push([SIZE,SIZE,-SIZE]);
-        vertices.push([-SIZE,SIZE,-SIZE]);
-        vertices.push([-SIZE,-SIZE,-SIZE]);
-        
-        vertices.push([SIZE,-SIZE,-SIZE]);
-        vertices.push([SIZE,SIZE,-SIZE]);
-        vertices.push([SIZE,-SIZE,-SIZE]);
-        vertices.push([SIZE,-SIZE,SIZE]);
-        
-        vertices.push([-SIZE,-SIZE,SIZE]);
-        vertices.push([-SIZE,-SIZE,-SIZE]);
-        vertices.push([-SIZE,SIZE,-SIZE]);
-        vertices.push([-SIZE,SIZE,SIZE]);
+       
         for(var i=0;i<vertices.length;i++)
         {
             var xyLoc = project3D(vertices[i][0],vertices[i][1],vertices[i][2]);

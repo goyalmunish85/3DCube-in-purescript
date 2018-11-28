@@ -3,9 +3,7 @@ var PS = {};
 (function(exports) {exports.getCtx = function(){
     var canvas = document.getElementById("myC");
     return canvas.getContext("2d");
-  }
-
-  var SIZE = 75;   
+  }                
 
   function project3D(x,y,z) {
     var Qx=Math.PI/4;
@@ -23,30 +21,10 @@ var PS = {};
   }
 
   exports.drawCanvas = function(ctx){
-    return function(canvas){
+    return function(vertices){
         return function(){
-       
-          var vertices = [];
           var verticesPixLoc = [];
-          vertices.push([SIZE,SIZE,SIZE]);
-          vertices.push([-SIZE,SIZE,SIZE]);
-          vertices.push([-SIZE,-SIZE,SIZE]);
-          vertices.push([SIZE,-SIZE,SIZE]);
-        
-          vertices.push([SIZE,SIZE,SIZE]);
-          vertices.push([SIZE,SIZE,-SIZE]);
-          vertices.push([-SIZE,SIZE,-SIZE]);
-          vertices.push([-SIZE,-SIZE,-SIZE]);
-        
-          vertices.push([SIZE,-SIZE,-SIZE]);
-          vertices.push([SIZE,SIZE,-SIZE]);
-          vertices.push([SIZE,-SIZE,-SIZE]);
-          vertices.push([SIZE,-SIZE,SIZE]);
-        
-          vertices.push([-SIZE,-SIZE,SIZE]);
-          vertices.push([-SIZE,-SIZE,-SIZE]);
-          vertices.push([-SIZE,SIZE,-SIZE]);
-          vertices.push([-SIZE,SIZE,SIZE]);
+       
           for(var i=0;i<vertices.length;i++)
           {
               var xyLoc = project3D(vertices[i][0],vertices[i][1],vertices[i][2]);
@@ -68,6 +46,8 @@ var PS = {};
   "use strict";
   var $foreign = PS["Main"];
   var Control_Bind = PS["Control.Bind"];
+  var Data_Array = PS["Data.Array"];
+  var Data_Ring = PS["Data.Ring"];
   var Data_Semiring = PS["Data.Semiring"];
   var Data_Time_Duration = PS["Data.Time.Duration"];
   var Effect = PS["Effect"];
@@ -78,12 +58,8 @@ var PS = {};
   var Prelude = PS["Prelude"];                 
   var main = function __do() {
       var v = $foreign.getCtx();
-      return $foreign.drawCanvas(v)({
-          x: 0,
-          y: 0,
-          width: 650,
-          height: 400
-      })();
+      var vertices = [ [ 75, 75, 75 ], [ -75 | 0, 75, 75 ], [ -75 | 0, -75 | 0, 75 ], [ 75, -75 | 0, 75 ], [ 75, 75, 75 ], [ 75, 75, -75 | 0 ], [ -75 | 0, 75, -75 | 0 ], [ -75 | 0, -75 | 0, -75 | 0 ], [ 75, -75 | 0, -75 | 0 ], [ 75, 75, -75 | 0 ], [ 75, -75 | 0, -75 | 0 ], [ 75, -75 | 0, 75 ], [ -75 | 0, -75 | 0, 75 ], [ -75 | 0, -75 | 0, -75 | 0 ], [ -75 | 0, 75, -75 | 0 ], [ -75 | 0, 75, 75 ] ];
+      return $foreign.drawCanvas(v)(vertices)();
   };
   var add2AndMultiplyBy3 = function (x) {
       var x1 = x + 2 | 0;

@@ -8,11 +8,11 @@ import Effect.Aff (delay, launchAff_)
 import Effect.Class (liftEffect)
 import Effect.Class.Console (logShow)
 import Effect.Console (log)
-
+import Data.Array
 foreign import data Context :: Type
 
 foreign import getCtx :: Effect Context
-foreign import drawCanvas :: Context -> {x:: Int, y:: Int, width:: Int, height:: Int}  -> Effect Unit
+foreign import drawCanvas :: Context -> Array(Array Int)-> Effect Unit
 
 add2AndMultiplyBy3 :: Int -> Int
 add2AndMultiplyBy3 x =
@@ -20,7 +20,10 @@ add2AndMultiplyBy3 x =
     x1 = x + 2
       in x1 * 3
 
+
+
 main :: Effect Unit
 main = do
   ctx <- getCtx
-  drawCanvas ctx {x: 0, y: 0, width: 650, height: 400}
+  let vertices = [[75,75,75], [-75,75,75], [-75,-75,75], [75,-75,75], [75,75,75], [75,75,-75], [-75,75,-75], [-75,-75,-75], [75,-75,-75], [75,75,-75], [75,-75,-75], [75,-75,75], [-75,-75,75], [-75,-75,-75], [-75,75,-75], [-75,75,75]]
+  drawCanvas ctx vertices
