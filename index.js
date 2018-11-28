@@ -3,7 +3,7 @@ var PS = {};
 (function(exports) {exports.getCtx = function(){
     var canvas = document.getElementById("myC");
     return canvas.getContext("2d");
-  }                
+  }
 
   function project3D(x,y,z) {
     var Qx=Math.PI/4;

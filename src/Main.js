@@ -3,8 +3,6 @@ exports.getCtx = function(){
   return canvas.getContext("2d");
 }
 
-var SIZE = 75;   
-
 function project3D(x,y,z) {
   var Qx=Math.PI/4;
   var Qy=Math.PI/3;
