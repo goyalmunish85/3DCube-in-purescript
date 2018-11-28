@@ -1481,6 +1481,9 @@ var PS = {};
           ctx.beginPath();
           ctx.moveTo(start.x, start.y);
           ctx.lineTo(end.x, end.y);
+          ctx.lineTo(end.y, end.y);
+          ctx.lineTo(end.y, start.y);
+          ctx.lineTo(end.x, start.x); 
           ctx.stroke();
         }
       }
@@ -1509,61 +1512,13 @@ var PS = {};
           x: 50,
           y: 250
       })))(function () {
-          return Control_Bind.discard(Control_Bind.discardUnit)(Effect_Aff.bindAff)(Effect_Class.liftEffect(Effect_Aff.monadEffectAff)($foreign.drawLine(v)({
-              x: 50,
-              y: 50
+          return Effect_Class.liftEffect(Effect_Aff.monadEffectAff)($foreign.drawLine(v)({
+              x: 100,
+              y: 100
           })({
-              x: 250,
-              y: 50
-          })))(function () {
-              return Control_Bind.discard(Control_Bind.discardUnit)(Effect_Aff.bindAff)(Effect_Class.liftEffect(Effect_Aff.monadEffectAff)($foreign.drawLine(v)({
-                  x: 50,
-                  y: 250
-              })({
-                  x: 250,
-                  y: 250
-              })))(function () {
-                  return Control_Bind.discard(Control_Bind.discardUnit)(Effect_Aff.bindAff)(Effect_Class.liftEffect(Effect_Aff.monadEffectAff)($foreign.drawLine(v)({
-                      x: 250,
-                      y: 50
-                  })({
-                      x: 250,
-                      y: 250
-                  })))(function () {
-                      return Control_Bind.discard(Control_Bind.discardUnit)(Effect_Aff.bindAff)(Effect_Class.liftEffect(Effect_Aff.monadEffectAff)($foreign.drawLine(v)({
-                          x: 100,
-                          y: 100
-                      })({
-                          x: 100,
-                          y: 300
-                      })))(function () {
-                          return Control_Bind.discard(Control_Bind.discardUnit)(Effect_Aff.bindAff)(Effect_Class.liftEffect(Effect_Aff.monadEffectAff)($foreign.drawLine(v)({
-                              x: 100,
-                              y: 100
-                          })({
-                              x: 300,
-                              y: 100
-                          })))(function () {
-                              return Control_Bind.discard(Control_Bind.discardUnit)(Effect_Aff.bindAff)(Effect_Class.liftEffect(Effect_Aff.monadEffectAff)($foreign.drawLine(v)({
-                                  x: 100,
-                                  y: 300
-                              })({
-                                  x: 300,
-                                  y: 300
-                              })))(function () {
-                                  return Effect_Class.liftEffect(Effect_Aff.monadEffectAff)($foreign.drawLine(v)({
-                                      x: 300,
-                                      y: 100
-                                  })({
-                                      x: 300,
-                                      y: 300
-                                  }));
-                              });
-                          });
-                      });
-                  });
-              });
-          });
+              x: 100,
+              y: 300
+          }));
       }))();
   };
   var add2AndMultiplyBy3 = function (x) {

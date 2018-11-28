@@ -26,18 +26,7 @@ main = do
   launchAff_ (do
     -- delay (Milliseconds 2000.0)
     liftEffect (drawLine ctx {x: 50, y: 50} {x: 50, y: 250})
-    liftEffect (drawLine ctx {x: 50, y: 50} {x: 250, y: 50})
-    liftEffect (drawLine ctx {x: 50, y: 250} {x: 250, y: 250})
-    -- delay (Milliseconds 2000.0)
-    liftEffect (drawLine ctx {x: 250, y: 50} {x: 250, y: 250})
+   
     liftEffect (drawLine ctx {x: 100, y: 100} {x: 100, y: 300})
-    liftEffect (drawLine ctx {x: 100, y: 100} {x: 300, y: 100})
-    liftEffect (drawLine ctx {x: 100, y: 300} {x: 300, y: 300})
-    -- delay (Milliseconds 2000.0)
-    liftEffect (drawLine ctx {x: 300, y: 100} {x: 300, y: 300})
-     liftEffect (drawLine ctx {x: 50, y: 50} {x: 100, y: 100})
-    liftEffect (drawLine ctx {x: 250, y: 50} {x: 300, y: 100})
-    liftEffect (drawLine ctx {x: 50, y: 250} {x: 300, y: 100})
-    -- delay (Milliseconds 2000.0)
-    liftEffect (drawLine ctx {x: 250, y: 250} {x: 300, y: 300})
+   
 )
