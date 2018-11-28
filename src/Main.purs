@@ -23,6 +23,4 @@ add2AndMultiplyBy3 x =
 main :: Effect Unit
 main = do
   ctx <- getCtx
-  launchAff_ (do
-    liftEffect (drawCanvas ctx {x: 50, y: 50, width: 250, height: 250})
-)
+  drawCanvas ctx {x: 0, y: 0, width: 650, height: 400}
