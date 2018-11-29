@@ -18,17 +18,33 @@ function project3D(x,y,z) {
   return [xRotQzQxQy,yRotQzQxQy]
 }
 
+
+exports.updateCanvas = function(ctx){
+  return function(){
+    var rate=0.999;
+    dx=t=rate*dx;
+    Qx=Qx+dx;
+    dy=rate*dy;
+    Qy=Qy+dy;
+    dz=rate*dz;
+    Qz=Qz+dz;
+    drawCube();  
+    window.requestAnimationFrame(updateCube)
+  }
+}
 exports.drawCanvas = function(ctx){
   return function(vertices){
       return function(){
         var verticesPixLoc = [];
-       
+        ctx.clearRect(0,0,650,400);
         for(var i=0;i<vertices.length;i++)
         {
             var xyLoc = project3D(vertices[i][0],vertices[i][1],vertices[i][2]);
+            console.log(xyLoc)
             var pixLoc = [xyLoc[0]+650/2,-xyLoc[1]+400/2];
             verticesPixLoc.push(pixLoc);
         }
+        console.log(verticesPixLoc)
         for(var i=0;i<vertices.length-1;i++){
             ctx.beginPath();
             ctx.moveTo(verticesPixLoc[i][0],verticesPixLoc[i][1]);
